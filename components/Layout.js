@@ -11,10 +11,7 @@ const Layout = (props) => (
     <Head>
       <title key="title">Next.js title</title>
     </Head>
-    <style jsx global>{`
-        body{ margin: 0; }
-      `}
-    </style>
+    <style jsx global>{`body{ margin: 0; }`}</style>
     <Menu />
     {props.children}
   </div>
