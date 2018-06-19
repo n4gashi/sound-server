@@ -3,9 +3,7 @@ import Layout from "../components/Layout";
 
 export default () => (
   <Layout>
-    <h1>Sign up</h1>
-    <Link href="/auth/facebook">
-      <a>Sign up with Facebook</a>
-    </Link>
+    <h1>Profile</h1>
+    <p>This is your profile</p>
   </Layout>
 );
