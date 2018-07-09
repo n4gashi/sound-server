@@ -3,45 +3,16 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
 
 const appPassport = require('./appPassport')
 const auth = require('./auth');
+const schema = require('../data/schema');
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 async function init() {
-  // Some fake data
-  const books = [
-    {
-      title: "Harry Potter and the Sorcerer's stone",
-      author: 'J.K. Rowling',
-    },
-    {
-      title: 'Jurassic Park',
-      author: 'Michael Crichton',
-    },
-  ];
-
-  // The GraphQL schema in string form
-  const typeDefs = `
-    type Query { books: [Book] }
-    type Book { title: String, author: String }
-  `;
-
-  // The resolvers
-  const resolvers = {
-    Query: { books: () => books },
-  };
-
-  // Put together a schema
-  const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers,
-  });
-
   try {
     await app.prepare()
     const server = express()
@@ -56,7 +27,6 @@ async function init() {
 
     // The GraphQL endpoint
     server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
     // GraphiQL, a visual editor for queries
     server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 

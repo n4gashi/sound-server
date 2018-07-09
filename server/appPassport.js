@@ -1,5 +1,5 @@
 var passport = require('passport');
-var Strategy = require('passport-facebook').Strategy;
+var FBStrategy = require('passport-facebook').Strategy;
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -8,7 +8,7 @@ var Strategy = require('passport-facebook').Strategy;
 // behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
-passport.use(new Strategy({
+passport.use(new FBStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
   callbackURL: 'http://localhost:3000/auth/facebook/return'
@@ -19,6 +19,7 @@ function (accessToken, refreshToken, profile, cb) {
   // be associated with a user record in the application's database, which
   // allows for account linking and authentication with other identity
   // providers.
+  console.log('FBStrategy: ', profile)
   return cb(null, profile);
 }));
 
@@ -32,6 +33,7 @@ function (accessToken, refreshToken, profile, cb) {
 // example does not have a database, the complete Facebook profile is serialized
 // and deserialized.
 passport.serializeUser(function (user, cb) {
+  console.log(user)
   cb(null, user);
 });
 

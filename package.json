@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -w server -w yarn.lock -w package.json -w next.config.js",
+    "dev": "nodemon -w server -w yarn.lock -w package.json -w next.config.js -w data",
     "build": "next build",
     "start": "node server/app.js",
     "sequelize": "node_modules/.bin/sequelize"
