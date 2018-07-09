@@ -55,10 +55,10 @@ async function init() {
     server.use(appPassport.session())
 
     // The GraphQL endpoint
-    app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+    server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
     // GraphiQL, a visual editor for queries
-    app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+    server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
     server.use('/auth', auth);
 
@@ -70,7 +70,7 @@ async function init() {
       if (err) throw err
       console.log('> Ready on http://localhost:3000')
     })
-  } catch (e) {
+  } catch (ex) {
     console.error(ex.stack)
     process.exit(1)
   }
