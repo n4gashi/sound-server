@@ -15,6 +15,8 @@
 ## Getting started
 ```bash
 yarn install
+# Make sure db is updated
+npm run migrate up
 ```
 
 ## Develop

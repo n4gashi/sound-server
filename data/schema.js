@@ -19,13 +19,13 @@ type Song {
   id: Int
   title: String,
   authorName: String,
-  authorId: Int,
-  uploader: User
+  author: User
 }
 
 type Query {
-  user(firstName: String, lastName: String): User
+  user(id: Int): User
   allUsers: [User]
+  allSongs: [Song]
   getFortuneCookie: String # we'll use this later
 }
 `;
