@@ -1,0 +1,17 @@
+{
+  "defaultEnv": {
+    "ENV": "NODE_ENV"
+  },
+  "development": {
+    "driver": "pg",
+    "user": {
+      "ENV": "PGUSER"
+    },
+    "database": {
+      "ENV": "PGDATABASE"
+    },
+    "host": {
+      "ENV": "PGHOST"
+    }
+  }
+}

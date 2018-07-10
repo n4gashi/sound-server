@@ -1,0 +1,4 @@
+{
+  "configFile": "config/database.json",
+  "verbose": true
+}
