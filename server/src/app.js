@@ -1,13 +1,14 @@
-require('dotenv').config()
-const express = require('express')
-const next = require('next')
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+import dotenv from 'dotenv';
+import express from 'express';
+import next from 'next';
+import bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
-const appPassport = require('./appPassport')
-const auth = require('./auth');
-const schema = require('../data/schema');
+import appPassport from './appPassport';
+import auth from './auth';
+import schema from './data/schema';
 
+dotenv.config()
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()

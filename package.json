@@ -2,13 +2,13 @@
   "name": "sound-server",
   "version": "1.0.0",
   "description": "",
-  "main": "server/app.js",
+  "main": "server/build/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -w server -w yarn.lock -w package.json -w next.config.js -w data",
+    "start": "nodemon server/src/app.js --exec babel-node",
     "migrate": "node_modules/db-migrate/bin/db-migrate",
-    "build": "next build",
-    "start": "node server/app.js"
+    "build": "next build && babel server/src --out-dir server/build",
+    "serve": "node server/build/app.js"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,8 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "nodemon": "^1.17.5"
   }
 }
